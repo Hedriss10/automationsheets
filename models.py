@@ -39,4 +39,7 @@ class Ro(Base):
     create_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, server_default=func.now())
 
     def __repr__(self):
-        return f"<Ro cpf={self.cpf} uf={self.uf}>"
+        return f"Registred sucessfull"
+    
+    def __init__(self, **kw):
+        super().__init__(**kw)

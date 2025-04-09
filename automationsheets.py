@@ -87,8 +87,8 @@ class RoAutomationSpreedsheet:
         for record in tqdm(records, desc="Transformando registros"):
             try:
                 instance = Ro(
-                    cpf=record.get('cpf'),
                     name=record.get('nome'),
+                    cpf=record.get('cpf'),
                     age=record.get('age'),
                     date_year=self._parse_date(record.get('date_year')),
                     gender=record.get('gender'),
