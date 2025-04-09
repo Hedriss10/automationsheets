@@ -58,8 +58,7 @@ class RoAutomationSpreedsheet:
             'RISCO_CREDITO': 'risco_credito',
         }
 
-        df = df.rename(rename_map, strict=False)
-
+        df = df.rename({k: v for k, v in rename_map.items()}, strict=False)
         # Limpeza do campo CPF
         if 'cpf' in df.columns:
             df = df.with_columns([
