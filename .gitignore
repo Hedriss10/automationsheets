@@ -1,0 +1,10 @@
+# ignore files
+.env
+
+__pycache__
+
+.venv
+venv/
+.venv
+
+.DS_Store
