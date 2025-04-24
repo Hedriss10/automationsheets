@@ -11,8 +11,8 @@ from models import Base, Ro
 load_dotenv()
 
 # Configurações
-DATABASE_URL = os.getenv("DEV_DATABASE_URL")
-engine = create_engine(DATABASE_URL)
+DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
+engine = create_engine(DATABASE_URL, connect_args={"options": "-csearch_path=spreed"})
 Session = sessionmaker(bind=engine)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -76,10 +76,9 @@ class RoAutomationSpreedsheet:
             'dd_two', 'phone_two', 'have_whatsapp_two',
             'email', 'email_two', 'email_three'
         ]
-
+        df = df.unique(subset=['cpf'], keep='last')
         colunas_presentes = [c for c in columns_select if c in df.columns]
         df = df.select(colunas_presentes)
-
         records = df.to_dicts()
         instances = []
 

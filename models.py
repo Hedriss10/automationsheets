@@ -8,7 +8,7 @@ from datetime import datetime
 
 load_dotenv() # laod envs
 
-DATABASE_URL = os.getenv("DEV_DATABASE_URL")
+DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URI")
 
 class Base(DeclarativeBase):
     pass
@@ -20,7 +20,7 @@ class Ro(Base):
     
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
-    cpf: Mapped[str] = mapped_column(String, nullable=False, unique=True)
+    cpf: Mapped[str] = mapped_column(String, nullable=False)
     age: Mapped[int] = mapped_column(Integer, nullable=True)
     date_year: Mapped[datetime] = mapped_column(DateTime, nullable=True)
     gender: Mapped[str] = mapped_column(String, nullable=True)
@@ -40,6 +40,4 @@ class Ro(Base):
 
     def __repr__(self):
         return f"Registred sucessfull"
-    
-    def __init__(self, **kw):
-        super().__init__(**kw)
+
