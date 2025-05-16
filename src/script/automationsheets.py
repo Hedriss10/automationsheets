@@ -5,7 +5,7 @@ from tqdm import tqdm
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
-from models import Base, Ro
+from src.models.models import Base, Ro
 
 # Carregar variáveis de ambiente
 load_dotenv()

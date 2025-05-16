@@ -2,7 +2,7 @@ import os
 
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import func, String, DateTime, Integer
+from sqlalchemy import func, String, DateTime, Integer, Boolean
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -36,6 +36,7 @@ class Ro(Base):
     email: Mapped[str] = mapped_column(String, nullable=True)
     email_two: Mapped[str] = mapped_column(String, nullable=True)
     email_three: Mapped[str] = mapped_column(String, nullable=True)
+    has_filter: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default=False)
     create_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, server_default=func.now())
 
     def __repr__(self):
